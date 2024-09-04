@@ -66,29 +66,13 @@ window.onload = () => {
 
     function genList(){
         const storedTodos = {...localStorage}
-        Object.entries(storedTodos).forEach(([key, value])=>{
-            const valueObj = JSON.parse(value);
-            createListElement(key, valueObj['con'], valueObj['checked']);
+        const todosKeys = Object.keys(storedTodos).sort((a,b)=>a-b);
+        todosKeys.forEach((cur)=>{
+            const valueObj = JSON.parse(localStorage.getItem(cur));
+            createListElement(cur, valueObj['con'], valueObj['checked']);
         })
     }
 
     submitTodo.addEventListener('submit', (e) => { e.preventDefault(); addList(e); e.target.whatTodo.value = '' });
     genList();
 }
-
-/*
-할일을 로컬스토리지에 저장한다
-체크 여부도 저장한다
-
-삭제와 로컬스토리지 연동
-
-데이터 형태
-아이디 , 내용, 체크여부
-const creationTime = new Date().getTime();
-numberId : {con : string, check: boolean}
-numberId는 creationTime
-
-const creationTime = new Date().getTime();
-localStorage.setItem(creationTime, {con : string, checked: boolean})
-
-*/

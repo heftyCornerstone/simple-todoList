@@ -12,11 +12,25 @@ body{
     flex-direction: column;
     align-items: center;
     width: 400px;
-    height:300px;
+    height:350px;
+    padding:10px;
     background-color: white;
 }
 .list {
     margin-top: 20px;
+    height:220px;
+}
+.list_hideScroll {
+    position: relative;
+    width:280px;
+    height:100%;
+    overflow: hidden;
+}
+.list_scrollBox {
+    position: relative;
+    width: 295px;
+    height: 100%;
+    overflow-y: scroll;
 }
 .list_ul{
     padding: 0;
